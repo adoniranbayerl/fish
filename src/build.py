@@ -10,7 +10,7 @@ alfabética) + <vol>/tail.html. O script numera as páginas, alterna
 recto/verso, resolve {{pg:id}} e embute fontes e imagens em base64.
 Imagens ausentes viram um quadro "foto pendente" (rode fetch_photos.py).
 """
-import base64, io, os, re, subprocess, sys
+import base64, html as H, io, json, os, re, subprocess, sys
 
 from PIL import Image
 
@@ -58,9 +58,40 @@ def font_data_uri(rel):
     return 'data:font/woff2;base64,' + base64.b64encode(data).decode()
 
 
+def load_photos():
+    path = os.path.join(SRC, 'photos.json')
+    return json.load(open(path, encoding='utf-8')) if os.path.exists(path) else {}
+
+
+def credit_line(meta, with_url=False):
+    if not meta:
+        return 'crédito pendente'
+    s = f"{meta['author']} / {meta['source']}, {meta['license']}"
+    if with_url and meta.get('page'):
+        s += '. ' + re.sub(r'^https?://(www\.)?', '', meta['page'])
+    return s
+
+
+def fill_credits(html, pages_imgs, photos):
+    # legendas curtas: <span class="cr" data-cr="img/x.jpg"></span>
+    html = re.sub(r'<span class="cr" data-cr="([^"]+)"></span>',
+                  lambda m: f'<span class="cr">{H.escape(credit_line(photos.get(m.group(1))))}</span>', html)
+    # lista completa na página de créditos
+    items = []
+    seen = set()
+    for n, imgs in pages_imgs:
+        for src in imgs:
+            if (n, src) in seen or src.endswith('.svg'):
+                continue
+            seen.add((n, src))
+            items.append(f'<p><b>p. {n}</b> {H.escape(credit_line(photos.get(src), True))}</p>')
+    return html.replace('<!--#credits-->', '\n'.join(items))
+
+
 def number_pages(pages):
     ids = {}
     out = []
+    pages_imgs = []
     for n, p in enumerate(pages, 1):
         side = 'recto' if n % 2 else 'verso'
         p = re.sub(r'(<section class="page) (?:recto|verso)', rf'\1 {side}', p, count=1)
@@ -71,6 +102,7 @@ def number_pages(pages):
         # âncoras internas (data-anchor="x") também recebem número
         for a in re.findall(r'data-anchor="([^"]+)"', p):
             ids[a] = n
+        pages_imgs.append((n, re.findall(r'<img[^>]*\bsrc="(img/[^"]+)"', p)))
         out.append(p)
     html = '\n\n'.join(out)
 
@@ -81,6 +113,7 @@ def number_pages(pages):
             return '?'
         return str(ids[key])
     html = re.sub(r'\{\{pg:([\w-]+)\}\}', pg, html)
+    html = fill_credits(html, pages_imgs, load_photos())
     return html, len(pages)
 
 
@@ -94,6 +127,9 @@ def build(vol, pdf=True):
     pdir = os.path.join(vdir, 'pages')
     files = sorted(f for f in os.listdir(pdir) if f.endswith('.html'))
     pages = [open(os.path.join(pdir, f), encoding='utf-8').read().strip() for f in files]
+    svgdir = os.path.join(vdir, 'svg')
+    pages = [re.sub(r'<!--#svg ([\w-]+)-->', lambda m: open(os.path.join(svgdir, m.group(1) + '.svg'), encoding='utf-8').read(), p)
+             for p in pages]
     body, count = number_pages(pages)
     html = head + body + tail
     html = re.sub(r'url\((fonts/[^)]+)\)', lambda m: f'url({font_data_uri(m.group(1))})', html)

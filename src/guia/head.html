@@ -264,5 +264,40 @@ table.log tr.alvo td{ height:auto; padding:1.3mm 1.5mm; color:var(--accent); fon
   table.week td:first-child{ font-weight:700; }
   table.prob td:nth-child(2){ color:var(--tinta-2); }
 </style>
+<style>
+/* ============ 2ª edição: catálogos, fichas de variedade, alternativas ============ */
+.vgrid{ display:grid; grid-template-columns:repeat(3,1fr); column-gap:5mm; row-gap:4.6mm; align-items:start; }
+.vgrid.c2{ grid-template-columns:repeat(2,1fr); column-gap:7mm; }
+.vcard{ break-inside:avoid; }
+.vcard img{ width:100%; aspect-ratio:8/5; object-fit:cover; background:var(--papel-2); }
+.vgrid.flat .vcard img{ aspect-ratio:16/9; }
+.vcard .vh{ display:flex; align-items:center; justify-content:space-between; gap:2mm; margin:1.5mm 0 .8mm; min-height:8mm; }
+.vcard .vh b{ display:block; font:620 9.4pt/11pt var(--serif); color:var(--tinta); }
+.vcard .vh small{ display:block; margin-top:.3mm; font:italic 400 7pt/8.8pt var(--serif); color:var(--seixo); }
+.vcard .vh .fish{ width:19mm; flex:none; }
+.vcard p{ font:400 7.3pt/10pt var(--sans); color:var(--tinta-2); text-indent:0; }
+.vcard p + p{ margin-top:.8mm; }
+.vcard .tags{ margin-top:1.1mm; font:700 6.4pt/8.6pt var(--sans); color:var(--accent); letter-spacing:.01em; }
+.vcard .cr{ display:block; margin-top:.8mm; font:400 5.9pt/7.6pt var(--sans); }
+.spreads{ display:grid; grid-template-columns:repeat(5,1fr); column-gap:3mm; }
+.spreads .sv{ height:24mm; }
+.anat{ display:grid; grid-template-columns:1fr; }
+.bigfish .sv{ width:100%; }
+.decode{ display:flex; flex-wrap:wrap; gap:1.4mm 1.4mm; align-items:stretch; font:400 7.2pt/9.6pt var(--sans); }
+.decode span{ padding:1.4mm 2mm 1.6mm; background:var(--papel-3); border-top:1.3pt solid var(--accent); }
+.decode span b{ display:block; font:620 10pt/12pt var(--serif); color:var(--tinta); }
+table.t.tight td, table.t.tight th{ padding-top:1mm; padding-bottom:1mm; }
+table.t td.c, table.t th.c{ text-align:center; }
+.meter{ display:inline-flex; gap:.7mm; vertical-align:-.1mm; }
+.meter i{ width:1.9mm; height:1.9mm; border-radius:50%; border:.7pt solid var(--accent); }
+.meter i.on{ background:var(--accent); }
+/* função da planta */
+.funcs{ display:grid; grid-template-columns:1fr 1fr; column-gap:4mm; padding:2.2mm 0 0; border-top:.6pt solid var(--linha); }
+.funcs h4{ margin:0 0 1mm; font:700 7pt/1.2 var(--sans); color:var(--seixo); letter-spacing:.02em; }
+.funcs ul{ list-style:none; margin:0; padding:0; font:400 7.4pt/9.8pt var(--sans); color:var(--tinta); }
+.funcs li{ display:flex; gap:1.6mm; align-items:flex-start; margin-bottom:.9mm; }
+.funcs li svg{ width:3.6mm; height:3.6mm; flex:none; margin-top:.15mm; }
+.alt-of{ display:inline-block; margin-left:2mm; padding:.6mm 1.8mm .7mm; border:.8pt solid var(--accent); border-radius:3mm; font:700 6.6pt/1 var(--sans); color:var(--accent); vertical-align:middle; }
+</style>
 </head>
 <body>

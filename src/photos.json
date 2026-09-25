@@ -1,0 +1,182 @@
+{
+ "img/capa-betta.jpg": {
+  "author": "Klara Kulikova",
+  "source": "Unsplash",
+  "license": "Unsplash License",
+  "page": "https://unsplash.com/photos/lILzdeaHJFA"
+ },
+ "img/intro-betta.jpg": {
+  "author": "aquariumstocking.com",
+  "source": "Unsplash",
+  "license": "Unsplash License",
+  "page": "https://unsplash.com/photos/J9ZzEbxAobo"
+ },
+ "img/equip-nano.jpg": {
+  "author": "Karl Muscat",
+  "source": "Unsplash",
+  "license": "Unsplash License",
+  "page": "https://unsplash.com/photos/MznVlNbZ_vY"
+ },
+ "img/local-movel.jpg": {
+  "author": "Huy Phan",
+  "source": "Unsplash",
+  "license": "Unsplash License",
+  "page": "https://unsplash.com/photos/yYEiSC3opvM"
+ },
+ "img/subs-seixos.jpg": {
+  "author": "Fyre Willow",
+  "source": "Unsplash",
+  "license": "Unsplash License",
+  "page": "https://unsplash.com/photos/icxFuBbwJX0"
+ },
+ "img/hard-aquario.jpg": {
+  "author": "Christian Ang",
+  "source": "Unsplash",
+  "license": "Unsplash License",
+  "page": "https://unsplash.com/photos/9tbRnu_DxPY"
+ },
+ "img/hard2-seixos.jpg": {
+  "author": "Take Twenty-Six",
+  "source": "Unsplash",
+  "license": "Unsplash License",
+  "page": "https://unsplash.com/photos/WLRXXwb5oRk"
+ },
+ "img/plant-aquario.jpg": {
+  "author": "Christian Ang",
+  "source": "Unsplash",
+  "license": "Unsplash License",
+  "page": "https://unsplash.com/photos/xtbZ1jnpuEY"
+ },
+ "img/anubia-pedra.jpg": {
+  "author": "bob|P-&-S",
+  "source": "Flickr",
+  "license": "CC BY-NC-SA 2.0",
+  "page": ""
+ },
+ "img/anubia-flor.jpg": {
+  "author": "eclectic echoes",
+  "source": "Flickr",
+  "license": "CC BY-NC 2.0",
+  "page": ""
+ },
+ "img/samambaia-windelov.jpg": {
+  "author": "scratanut",
+  "source": "Flickr",
+  "license": "CC BY-SA 2.0",
+  "page": "https://flickr.com/photos/22128034@N00/3204404014"
+ },
+ "img/samambaia-comum.jpg": {
+  "author": "ictheostega",
+  "source": "Flickr",
+  "license": "CC BY 2.0",
+  "page": "https://flickr.com/photos/31539658@N05/3087685284"
+ },
+ "img/buce-natureza.jpg": {
+  "author": "Jiri Hodecek",
+  "source": "iNaturalist",
+  "license": "CC BY-NC 4.0",
+  "page": "https://inaturalist.org/observations/45984141"
+ },
+ "img/buce-aquario.jpg": {
+  "author": "Dũng Cá Xinh",
+  "source": "Flickr",
+  "license": "Domínio público (PDM 1.0)",
+  "page": "https://flickr.com/photos/129603523@N08/32066096664"
+ },
+ "img/crypt-wendtii.jpg": {
+  "author": "SurfGuard",
+  "source": "Flickr",
+  "license": "CC BY-NC-SA 2.0",
+  "page": "https://flickr.com/photos/30943163@N00/6132620758"
+ },
+ "img/hel-tapete.jpg": {
+  "author": "Chris Penny",
+  "source": "Flickr",
+  "license": "CC BY 2.0",
+  "page": "https://flickr.com/photos/61519791@N00/4179098837"
+ },
+ "img/hel-flor.jpg": {
+  "author": "umehlig",
+  "source": "Flickr",
+  "license": "CC BY-SA 2.0",
+  "page": "https://flickr.com/photos/29479962@N02/17549772842"
+ },
+ "img/musgo-ramos.jpg": {
+  "author": "mschmidt62",
+  "source": "Flickr",
+  "license": "CC BY-NC-SA 2.0",
+  "page": "https://flickr.com/photos/92863898@N00/4180505408"
+ },
+ "img/musgo-camarao.jpg": {
+  "author": "Joel Carnat",
+  "source": "Flickr",
+  "license": "CC BY 2.0",
+  "page": "https://flickr.com/photos/21708387@N02/8672378581"
+ },
+ "img/rotala-moita.jpg": {
+  "author": "Sor Betto",
+  "source": "Flickr",
+  "license": "CC BY-NC 2.0",
+  "page": "https://flickr.com/photos/23356117@N07/19133735571"
+ },
+ "img/rotala-emersa.jpg": {
+  "author": "山羌",
+  "source": "iNaturalist",
+  "license": "CC BY-NC 4.0",
+  "page": "https://inaturalist.org/observations/38322247"
+ },
+ "img/phyl-folhas.jpg": {
+  "author": "Sor Betto",
+  "source": "Flickr",
+  "license": "CC BY-NC 2.0",
+  "page": "https://flickr.com/photos/23356117@N07/29538739344"
+ },
+ "img/cycle-riacho.jpg": {
+  "author": "Eduard Galitsky",
+  "source": "Unsplash",
+  "license": "Unsplash License",
+  "page": "https://unsplash.com/photos/PtW1fCOFHPw"
+ },
+ "img/neo-cereja.jpg": {
+  "author": "Joel Carnat",
+  "source": "Flickr",
+  "license": "CC BY 2.0",
+  "page": "https://flickr.com/photos/21708387@N02/12516939625"
+ },
+ "img/neo-sakura.jpg": {
+  "author": "Joel Carnat",
+  "source": "Flickr",
+  "license": "CC BY 2.0",
+  "page": "https://flickr.com/photos/21708387@N02/8427419563"
+ },
+ "img/neo-verde.jpg": {
+  "author": "Joel Carnat",
+  "source": "Flickr",
+  "license": "CC BY 2.0",
+  "page": "https://flickr.com/photos/21708387@N02/9086020283"
+ },
+ "img/neo2-madeira.jpg": {
+  "author": "Joel Carnat",
+  "source": "Flickr",
+  "license": "CC BY 2.0",
+  "page": "https://flickr.com/photos/21708387@N02/8658146213"
+ },
+ "img/betta-halfmoon-azul.jpg": {
+  "author": "Kyaw Tun",
+  "source": "Unsplash",
+  "license": "Unsplash License",
+  "page": "https://unsplash.com/photos/k6BHLfw_jUg"
+ },
+ "img/betta2-convivencia.jpg": {
+  "author": "Joel Carnat",
+  "source": "Flickr",
+  "license": "CC BY 2.0",
+  "page": "https://flickr.com/photos/21708387@N02/9086020413"
+ },
+ "img/catappa.jpg": {
+  "author": "Joel Abroad",
+  "source": "Flickr",
+  "license": "CC BY-NC-SA 2.0",
+  "page": "https://flickr.com/photos/40295335@N00/5869596205"
+ }
+}
