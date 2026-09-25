@@ -222,6 +222,50 @@ def anatomy():
     return f.replace('</svg>', ''.join(extra) + '</svg>')
 
 
+def emersas_corte():
+    """Corte lateral: tampa parcial, folga de ar, plantas presas à borda de trás."""
+    W, H = 200, 150   # 1 cm = 5 unidades; aquário 20 cm de profundidade x 25 de altura
+    x0, y0 = 30, 20
+    rim = y0
+    water = rim + 4 * 5
+    sub_f, sub_b = 3 * 5, 7 * 5
+    g = []
+    g.append(f'<rect x="{x0}" y="{water}" width="100" height="{125 - water + y0}" fill="#1D6A66" fill-opacity=".14"/>')
+    g.append(f'<path d="M{x0},{y0 + 125 - sub_b} L{x0 + 100},{y0 + 125 - sub_f} L{x0 + 100},{y0 + 125} L{x0},{y0 + 125} Z" fill="#D9CDB1"/>')
+    g.append(f'<path d="M{x0},{water} L{x0 + 100},{water}" stroke="#1D6A66" stroke-width="1" stroke-dasharray="3 2"/>')
+    g.append(f'<rect x="{x0}" y="{y0}" width="100" height="125" fill="none" stroke="#16221E" stroke-width="1.6"/>')
+    # tampa parcial: cobre a frente (direita) 2/3
+    g.append(f'<rect x="{x0 + 34}" y="{y0 - 3}" width="68" height="3" fill="#A7C3C0" stroke="#3A4843" stroke-width=".6"/>')
+    # suporte e planta na borda de trás (esquerda)
+    g.append(f'<path d="M{x0 - 4},{y0 - 2} h14 v10 h-14 z" fill="#76827C"/>')
+    for i, (dx, dy) in enumerate(((-2, -20), (4, -30), (10, -22), (-8, -28), (16, -14))):
+        g.append(f'<path d="M{x0 + 3},{y0 - 2} C{x0 + 3 + dx / 2},{y0 - 12} {x0 + dx},{y0 + dy + 6} {x0 + dx},{y0 + dy}" stroke="#4A7829" stroke-width="1.2" fill="none"/>')
+        g.append(f'<ellipse cx="{x0 + dx}" cy="{y0 + dy}" rx="6" ry="3.6" transform="rotate({-30 + i * 15} {x0 + dx} {y0 + dy})" fill="#4A7829"/>')
+    g.append(f'<path d="M{x0 - 8},{y0 - 4} C{x0 - 18},{y0 + 10} {x0 - 16},{y0 + 30} {x0 - 20},{y0 + 44}" stroke="#4A7829" stroke-width="1.2" fill="none"/>')
+    for yy in (y0 + 10, y0 + 24, y0 + 38):
+        g.append(f'<ellipse cx="{x0 - 17}" cy="{yy}" rx="4.6" ry="2.8" fill="#4A7829"/>')
+    for i in range(7):
+        xx = x0 + 3 + i * 1.6
+        g.append(f'<path d="M{xx},{y0 + 8} C{xx - 2},{water + 8} {xx + 3},{water + 18} {xx + (i - 3) * 2},{water + 30}" stroke="#8C6A4A" stroke-width=".7" fill="none"/>')
+    # luminária em braço
+    g.append(f'<path d="M{x0 + 150},{y0 + 125} L{x0 + 150},{y0 - 30} L{x0 + 70},{y0 - 30}" stroke="#3A4843" stroke-width="1.4" fill="none"/>')
+    g.append(f'<rect x="{x0 + 40}" y="{y0 - 34}" width="44" height="6" rx="2" fill="#3A4843"/>')
+    g.append(f'<path d="M{x0 + 44},{y0 - 28} L{x0 + 26},{y0 + 6} M{x0 + 80},{y0 - 28} L{x0 + 98},{y0 + 6}" stroke="#E8C23A" stroke-opacity=".6" stroke-width=".8" stroke-dasharray="2 2"/>')
+    # cotas e rótulos
+    g.append(f'<path d="M{x0 + 106},{y0} v20 M{x0 + 103},{y0} h6 M{x0 + 103},{water} h6" stroke="#16221E" stroke-width=".6"/>')
+    lab = lambda x, y, t, a='start': f'<text x="{x}" y="{y}" font-size="6.2" text-anchor="{a}">{t}</text>'
+    g.append(lab(x0 + 110, y0 + 12, '4 cm de folga'))
+    g.append(lab(x0 + 68, y0 - 6, 'tampa parcial', 'middle'))
+    g.append(lab(x0 + 64, y0 - 38, 'luminária no braço', 'middle'))
+    g.append(lab(x0 - 20, y0 + 58, 'folhas fora', 'middle'))
+    g.append(lab(x0 - 22, y0 + 65, 'd’água', 'middle'))
+    g.append(lab(x0 + 18, water + 40, 'só as raízes na água'))
+    g.append(lab(x0, y0 + 136, 'trás'))
+    g.append(lab(x0 + 100, y0 + 136, 'frente', 'end'))
+    return (f'<svg class="sv" viewBox="-30 -46 220 206" role="img" aria-label="Corte lateral do aquário com tampa parcial e plantas emersas">'
+            + ''.join(g) + '</svg>')
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     names = {
@@ -301,6 +345,7 @@ def main():
     flare = fish('halfmoon', label='Betta em flare, com o opérculo aberto',
                  extra='<path d="M146,44 C156,40 164,50 160,62 C156,70 148,68 146,63 Z" fill="#8A1C1C" fill-opacity=".85"/>')
     open(os.path.join(OUT, 'comp-flare.svg'), 'w').write(flare)
+    open(os.path.join(OUT, 'emersas-corte.svg'), 'w').write(emersas_corte())
     print('svgs:', len(os.listdir(OUT)))
 
 
@@ -308,5 +353,6 @@ if __name__ == '__main__':
     import sys
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     main()
-    import betta
+    import betta, flora
     betta.main()
+    flora.main()
