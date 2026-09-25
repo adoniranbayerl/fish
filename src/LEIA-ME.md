@@ -19,6 +19,7 @@ node src/check.js vinte-litros-de-mundo.html /tmp/paginas   # vazamentos + captu
 python3 src/fetch_photos.py status   # fotos que faltam
 python3 src/fetch_photos.py search   # baixa candidatas e gera src/img/_candidatos/index.html
 python3 src/fetch_photos.py pick betta/crowntail 3
+python3 src/fetch_photos.py manual SLOT URL AUTOR FONTE LICENÇA PÁGINA [recorte]
 ```
 
 Precisa de Python 3 com Pillow e do Playwright (Chromium) para o PDF. Fotos ausentes aparecem como “foto pendente”.

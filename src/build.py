@@ -20,8 +20,8 @@ VOLUMES = {
     'guia': 'vinte-litros-de-mundo',
     'diario': 'diario-2027',
 }
-MAX_PX = 2000          # lado maior; ~240 dpi numa página A4 inteira
-JPEG_Q = 80
+MAX_PX = 1600          # lado maior; sobra resolução para as fotos do tamanho usado
+JPEG_Q = 78
 
 _cache = {}
 

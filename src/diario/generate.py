@@ -189,6 +189,8 @@ def month_open(m, M):
     last = dt.date(YEAR + (m == 12), m % 12 + 1, 1) - dt.timedelta(days=1)
     ms = [(d, it) for d, its in sorted(M.items()) if d.month == m for it in its if it[0] not in 'tw']
     lst = ''.join(f'<li><b>{fmt_curto(d)}</b> {lab}</li>' for d, (k, lab, t) in ms) or '<li>Nenhum marco impresso: é um mês de rotina.</li>'
+    band = (f'<figure class="mband"><img src="img/diario/mes-{m:02d}.jpg" alt="Foto de abertura de {MESES[m - 1]}"></figure>'
+            f'<p class="mcr"><span class="cr" data-cr="img/diario/mes-{m:02d}.jpg"></span></p>')
     body = f'''    <header>
       <p class="eyebrow">Mês {m} do aquário · D{dnum(first)} a D{dnum(last)}</p>
       <h2 class="h1 mtitle">{MESES[m - 1].capitalize()} <span>{YEAR}</span></h2>
@@ -205,7 +207,8 @@ def month_open(m, M):
       </div>
       <div class="photo"><span>Cole aqui a foto do começo do mês<br><small>sempre do mesmo ângulo, de frente</small></span></div>
     </div>'''
-    return page(f'mes-{m:02d}', m, MESES[m - 1].capitalize(), body, 'mopen')
+    html = page(f'mes-{m:02d}', m, MESES[m - 1].capitalize(), body, 'mopen')
+    return html.replace('\n  <div class="frame">', band + '\n  <div class="frame">', 1)
 
 
 def chart(title, ylabels, days, unit):
@@ -242,8 +245,8 @@ def front(M):
     out.append('''<section class="page recto diario cover-d nochrome" id="capa-d" style="--accent:var(--agua-claro)">
   <div class="cd-top"><p class="cv-eyebrow">Vinte litros de mundo · volume 2</p></div>
   <h1 class="cd-title">Diário<br>2027</h1>
-  <div class="cd-water"></div>
-  <div class="cd-fish"><!--#svg cor-butterfly--></div>
+  <figure class="cd-photo"><img src="img/diario/capa.jpg" alt="Betta de nadadeiras longas"></figure>
+  <p class="cd-cr"><span class="cr" data-cr="img/diario/capa.jpg"></span></p>
   <p class="cd-deck">Um ano de aquário, dia a dia: de 1º de janeiro, quando o vidro recebe a primeira pedra, a 31 de dezembro.</p>
   <dl class="cd-own"><div><dt>Aquário de</dt><dd></dd></div><div><dt>Montado em</dt><dd>1º de janeiro de 2027</dd></div><div><dt>Nome do betta</dt><dd></dd></div></dl>
 </section>''')
@@ -367,6 +370,13 @@ def back_matter():
     </div>
     <div class="sf wide"><h4>Um recado para quem vai ler este diário daqui a um ano</h4><div class="lines8"></div></div>'''
     out.append(page('planos', 0, 'Planos para 2028', body))
+    body = '''    <header>
+      <p class="eyebrow">Créditos</p>
+      <h2 class="h1">Fotos deste diário</h2>
+      <p class="deck">Todas as fotos são de uso livre, com as licenças indicadas. Licenças NC permitem apenas uso não comercial; este diário é para uso pessoal.</p>
+    </header>
+    <div class="credits c3"><!--#credits--></div>'''
+    out.append(page('creditos-d', 0, 'Créditos', body))
     return out
 
 

@@ -182,7 +182,7 @@ def cores3():
         ('mascarado', 'Mascarado', '<i>full mask</i>', 'A iridescência cobre também a cabeça, sem a “máscara” escura natural do rosto. Comum em azuis e turquesas.', 'cor-mascarado'),
         ('black-orchid', 'Black orchid', 'orquídea negra', 'Preto com iridescência azul-arroxeada nas nadadeiras, que forma estrias entre os raios.', 'cor-black-orchid'),
         ('samurai', 'Samurai', 'black samurai', 'Corpo preto com escamas metálicas contornadas, como uma armadura. Em geral, halfmoon plakat.', 'cor-samurai'),
-        ('avatar', 'Avatar', 'avatar', 'Iridescência metálica azul-turquesa intensa no corpo e na cabeça, com nadadeiras escuras.', 'cor-avatar'),
+        ('avatar', 'Avatar', 'avatar', 'Iridescência metálica azul-turquesa que cobre corpo e cabeça como uma armadura de escamas. As nadadeiras variam: escuras, vermelhas ou da mesma cor.', 'cor-avatar'),
         ('hellboy', 'Hellboy e red dragon', 'nomes de criador', 'Vermelhos escuros com escamas metálicas. Cada criador usa o nome para um peixe um pouco diferente: confie na foto, não no nome.', 'cor-hellboy'),
         ('alien', 'Alien', 'híbrido', 'Cruzamento de <i>B. splendens</i> com espécies selvagens (p. {{pg:bt-selvagens}}): corpo esverdeado e iridescência em escamas, nadadeiras curtas.', 'wild-mahachai'),
     ]
