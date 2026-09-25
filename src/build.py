@@ -19,6 +19,7 @@ ROOT = os.path.dirname(SRC)
 VOLUMES = {
     'guia': 'vinte-litros-de-mundo',
     'diario': 'diario-2027',
+    'criancas': 'vinte-litros-de-mundo-criancas',
 }
 MAX_PX = 1600          # lado maior; sobra resolução para as fotos do tamanho usado
 JPEG_Q = 78
