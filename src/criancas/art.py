@@ -485,23 +485,23 @@ def sos(kind):
     return svg(S[kind], '0 0 120 84', kind)
 
 
-def trilha(stops):
+def trilha(stops, per=4):
     """Tabuleiro em S com as etapas (sumário lúdico)."""
     pts = []
-    rows = [(60, 1), (190, -1), (320, 1)]
-    per = 4
+    right = 60 + (per - 1) * 140
+    nrows = (len(stops) + per - 1) // per
     for i in range(len(stops)):
         r = i // per
         c = i % per
-        y, d = rows[min(r, 2)]
-        x = 60 + c * 140 if d == 1 else 480 - c * 140
+        y = 60 + r * 130
+        x = 60 + c * 140 if r % 2 == 0 else right - c * 140
         pts.append((x, y))
     path = f'M{pts[0][0]},{pts[0][1]}'
     for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
         if y0 == y1:
             path += f' L{x1},{y1}'
         else:
-            cx = 560 if x0 > 300 else -20
+            cx = right + 80 if x0 > right / 2 else -20
             path += f' C{cx},{y0} {cx},{y1} {x1},{y1}'
     g = [f'<path d="{path}" fill="none" stroke="{C["areia2"]}" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>',
          f'<path d="{path}" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round"/>']
@@ -512,7 +512,7 @@ def trilha(stops):
                  f'<text x="{x}" y="{y + 9}" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="26" fill="{INK}">{num}</text>'
                  f'<text x="{x}" y="{y + 52}" text-anchor="middle" font-family="Fredoka" font-weight="600" font-size="14" fill="{INK}">{title}</text>'
                  f'<text x="{x}" y="{y + 69}" text-anchor="middle" font-family="Atkinson Hyperlegible Next" font-size="11.5" fill="{INK}">página {pg}</text>')
-    return svg(''.join(g), '-10 10 560 420', 'A trilha do aquarista, com as etapas do livro')
+    return svg(''.join(g), f'-10 10 {right + 90} {nrows * 130 + 30}', 'A trilha do aquarista, com as etapas do livro')
 
 
 def ciclo():

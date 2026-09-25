@@ -14,7 +14,7 @@ function loadPlaywright() {
   fs.mkdirSync(outDir, { recursive: true });
   const { chromium } = loadPlaywright();
   const browser = await chromium.launch();
-  const page = await browser.newPage({ viewport: { width: 900, height: 1300 } });
+  const page = await browser.newPage({ viewport: { width: 1200, height: 1300 } });
   await page.goto('file://' + path.resolve(input), { waitUntil: 'load', timeout: 180000 });
   await page.evaluate(() => document.fonts.ready);
   const problems = await page.evaluate(() => {
