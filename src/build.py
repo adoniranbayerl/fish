@@ -127,6 +127,8 @@ def build(vol, pdf=True):
     pdir = os.path.join(vdir, 'pages')
     files = sorted(f for f in os.listdir(pdir) if f.endswith('.html'))
     pages = [open(os.path.join(pdir, f), encoding='utf-8').read().strip() for f in files]
+    pages = [re.sub(r'<!--#include ([\w./-]+)-->', lambda m: open(os.path.join(SRC, m.group(1)), encoding='utf-8').read(), p)
+             for p in pages]
     svgdir = os.path.join(vdir, 'svg')
     pages = [re.sub(r'<!--#svg ([\w-]+)-->', lambda m: open(os.path.join(svgdir, m.group(1) + '.svg'), encoding='utf-8').read(), p)
              for p in pages]
